@@ -1,11 +1,11 @@
 package com.gescom.repositories;
 
-import com.gescom.entities.Client;
+import com.gescom.entities.Person;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 }
