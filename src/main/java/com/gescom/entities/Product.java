@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,4 +22,6 @@ public class Product {
     private String code;
     @ManyToOne
     private Category category;
+    @OneToMany(mappedBy = "product")
+    Collection<OrderItem> orderItems = new ArrayList<>();
 }
