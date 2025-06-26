@@ -39,7 +39,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public void editPerson(Provider provider, long id) {
+    public void editPersonProvider(Provider provider, long id) {
         Person person = this.repository.getReferenceById(id);
         if(person instanceof Provider){
             person.setAddress(provider.getAddress());
@@ -69,7 +69,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public void editPerson(Client client, long id) {
+    public void editPersonCLient(Client client, long id) {
         Person person = this.repository.getReferenceById(id);
         if(person instanceof Client){
             ((Client) person).setBirthday(client.getBirthday());
@@ -81,4 +81,20 @@ public class PersonServiceImpl implements PersonService{
             this.repository.save(person);
         }
     }
+
+    @Override
+    public Person findOnePerson(long id) {
+        return repository.getReferenceById(id);
+    }
+
+    @Override
+    public Provider findOneProviderById(long id){
+        return (Provider) this.repository.getReferenceById(id);
+    }
+
+    @Override
+    public Client findOneClientById(long id){
+        return (Client) this.repository.getReferenceById(id);
+    }
+
 }

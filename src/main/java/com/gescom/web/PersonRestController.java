@@ -1,6 +1,7 @@
 package com.gescom.web;
 
 import com.gescom.entities.Client;
+import com.gescom.entities.Person;
 import com.gescom.entities.Provider;
 import com.gescom.models.PersonModel;
 import com.gescom.services.PersonService;
@@ -46,13 +47,31 @@ public class PersonRestController {
 
     @GetMapping("persons/clients")
     List<Client> findAllClient(){
-        //logic
         return this.personService.findAllClients();
     }
 
     @GetMapping("persons/providers")
     List<Provider> findAllProvider(){
-        //logic
         return this.personService.findAllProviders();
+    }
+
+    @GetMapping("/persons/{id}")
+    Person findOneById(@PathVariable("id") long id) {
+        return this.personService.findOnePerson(id);
+    }
+
+    @GetMapping("/persons/clients/{id}")
+    Client findOneClientById(@PathVariable("id") long id){
+        return this.personService.findOneClientById(id);
+    }
+
+    @GetMapping("/persons/providers/{id}")
+    Provider findOneProvider(@PathVariable("id") long id){
+        return this.personService.findOneProviderById(id);
+    }
+
+    @DeleteMapping("Persons/{id}")
+    void deletePersons(@PathVariable("id") long id){
+        this.personService.deletePerson(id);
     }
 }

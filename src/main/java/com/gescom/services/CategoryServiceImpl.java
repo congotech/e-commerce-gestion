@@ -26,6 +26,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category findOne(long id) {
+        return this.repository.findById(id).orElse(null);
+    }
+
+    @Override
     public void deleteCategory(long id) {
         this.repository.deleteById(id);
     }
